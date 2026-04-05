@@ -1,8 +1,29 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/login', [PageController::class, 'login'])->name('login');
+Route::post('/login', [PageController::class, 'authenticate'])->name('login.post');
+Route::get('/register', [PageController::class, 'register'])->name('register');
+Route::post('/register', [PageController::class, 'store'])->name('register.post');
+Route::get('/logout', [PageController::class, 'logout'])->name('logout');
 
 
+// ==========================================LATIHAN ROUTE==========================================
+//     Route::prefix('complaint')->name('complaint.')->group(function () {
+//     Route::get('/', function () { return 'List Pengaduan'; })->name('index');
+//     Route::get('/create', function () { return 'Form Pengaduan'; })->name('create');
+//     Route::get('/{id}', function ($id) { 
+//         if (!$id) {
+//             return redirect()->route('complaint.index'); }})->name('show')->where('id', '[0-9]+');
+//     Route::get('/{id}/status', function ($id) { return 'status pengaduan: ' . $id; })->name('status');
+//     Route::get('/{id}/edit', function ($id) { return 'Edit Pengaduan: ' . $id; })->name('edit');
+
+// });
 // Route::get('/welcome-page', function () {
 //     return 'wellcome to smart city';
 // });
@@ -66,11 +87,6 @@ use Illuminate\Support\Facades\Route;
 //     Route::get('/produk', function () { return 'List Produk'; })->name('produk');
 //     Route::get('/orders', function () { return 'Orders'; })->name('orders');
 // });
-
-
-
-
-
 
 //beginer awalan latihan//
 // Route::get('/halo/{nama}', function ($nama) {
