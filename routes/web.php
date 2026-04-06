@@ -11,7 +11,7 @@ Route::post('/login', [PageController::class, 'authenticate'])->name('login.post
 Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::post('/register', [PageController::class, 'store'])->name('register.post');
 Route::get('/logout', [PageController::class, 'logout'])->name('logout');
-
+Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
 // ==========================================LATIHAN ROUTE==========================================
 //     Route::prefix('complaint')->name('complaint.')->group(function () {

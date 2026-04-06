@@ -23,6 +23,7 @@
             <li><a href="/contact" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Contact</a></li>
             <li><a href="/login" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Login</a></li>
             <li><a href="/register" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Register</a></li>
+            <li><a href="/dashboard" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
         </ul>
     </nav>
 

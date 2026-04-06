@@ -34,4 +34,12 @@ class PageController extends Controller
     {
         return view('register');
     }
+    public function dashboard()
+{
+    return view('dashboard', [
+        'users' => 1240,
+        'complaints' => 87,
+        'services' => 34
+    ]);
+}
 }
