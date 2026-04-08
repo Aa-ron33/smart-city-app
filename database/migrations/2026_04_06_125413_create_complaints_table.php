@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('judul_aduan', 255);
+            $table->text('jenis_aduan');
+            $table->text('deskripsi');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

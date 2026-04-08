@@ -17,13 +17,14 @@
     <!-- Navbar -->
     <nav class="bg-blue-500 text-white">
         <ul class="flex flex-wrap justify-center gap-2 p-3">
-            <li><a href="/" class="px-3 py-1 rounded text-sm bg-white text-blue-600">Home</a></li>
+            <li><a href="/" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Home</a></li>
             <li><a href="/about" class="px-3 py-1 rounded text-sm hover:bg-blue-600">About</a></li>
             <li><a href="/services" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Services</a></li>
             <li><a href="/contact" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Contact</a></li>
             <li><a href="/login" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Login</a></li>
             <li><a href="/register" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Register</a></li>
             <li><a href="/dashboard" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
+            <li><a href="/complaints" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Complaints</a></li>
         </ul>
     </nav>
 

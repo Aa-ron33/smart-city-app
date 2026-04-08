@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
-
+//route untuk main page
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [PageController::class, 'services'])->name('services');
@@ -12,6 +12,15 @@ Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::post('/register', [PageController::class, 'store'])->name('register.post');
 Route::get('/logout', [PageController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+//route untuk complaints
+Route::get('/complaints', [PageController::class, 'complaints'])->name('complaints');
+Route::get('/complaints/create', [PageController::class, 'create'])->name('complaints.create');
+Route::post('/complaints', [PageController::class, 'store'])->name('complaints.store');
+Route::get('/complaints/{id}', [PageController::class, 'show'])->name('complaints.show');
+Route::get('/complaints/{id}/status', [PageController::class, 'status'])->name('complaints.status');
+Route::get('/complaints/{id}/edit', [PageController::class, 'edit'])->name('complaints.edit');
+Route::put('/complaints/{id}', [PageController::class, 'update'])->name('complaints.update');
+Route::delete('/complaints/{id}', [PageController::class, 'destroy'])->name('complaints.destroy');
 
 // ==========================================LATIHAN ROUTE==========================================
 //     Route::prefix('complaint')->name('complaint.')->group(function () {
