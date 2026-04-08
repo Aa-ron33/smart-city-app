@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Complaint;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -41,5 +44,11 @@ class PageController extends Controller
         'complaints' => 87,
         'services' => 34
     ]);
+    // ADMIN COMPLAINTS
+public function adminComplaints(Request $request)
+{
+    $search = $request->get('search');
+    
+    $complaints
 }
 }
