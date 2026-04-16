@@ -1,27 +1,41 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ComplaintController;
+
 //route untuk main page
+
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+//route untuk auth login dan dashboard
+
 Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::post('/login', [PageController::class, 'authenticate'])->name('login.post');
 Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::post('/register', [PageController::class, 'store'])->name('register.post');
 Route::get('/logout', [PageController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-//route untuk complaints
-Route::get('/complaints', [PageController::class, 'complaints'])->name('complaints');
-Route::get('/complaints/create', [PageController::class, 'create'])->name('complaints.create');
-Route::post('/complaints', [PageController::class, 'store'])->name('complaints.store');
-Route::get('/complaints/{id}', [PageController::class, 'show'])->name('complaints.show');
-Route::get('/complaints/{id}/status', [PageController::class, 'status'])->name('complaints.status');
-Route::get('/complaints/{id}/edit', [PageController::class, 'edit'])->name('complaints.edit');
-Route::put('/complaints/{id}', [PageController::class, 'update'])->name('complaints.update');
-Route::delete('/complaints/{id}', [PageController::class, 'destroy'])->name('complaints.destroy');
 
+//route untuk complaints
+
+Route::get('/complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+Route::get('/complaints/create', [ComplaintController::class, 'create'])->name('complaints.create');
+Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+Route::get('/complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
+Route::get('/complaints/{id}/status', [ComplaintController::class, 'status'])->name('complaints.status');
+Route::get('/complaints/{id}/edit', [ComplaintController::class, 'edit'])->name('complaints.edit');
+Route::put('/complaints/{id}', [ComplaintController::class, 'update'])->name('complaints.update');
+Route::delete('/complaints/{id}', [ComplaintController::class, 'destroy'])->name('complaints.destroy');
+
+// route untuk admin
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints');
+    Route::patch('complaints/{id}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.status.update');
+});
 // ==========================================LATIHAN ROUTE==========================================
 //     Route::prefix('complaint')->name('complaint.')->group(function () {
 //     Route::get('/', function () { return 'List Pengaduan'; })->name('index');
