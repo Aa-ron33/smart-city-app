@@ -28,6 +28,7 @@ class PageController extends Controller
     {
         return view('contact');
     }
+
     public function login()
     {
         return view('login');
@@ -37,15 +38,16 @@ class PageController extends Controller
     {
         return view('register');
     }
+
     public function dashboard()
-{
-    return view('dashboard', [
-        'users' => 1240,
-        'complaints' => 87,
-        'services' => 34
-    ]);
-}
-    // ADMIN COMPLAINTS
+    {
+        return view('dashboard', [
+            'users' => 1240,
+            'complaints' => 87,
+            'services' => 34
+        ]);
+    }
+
     public function adminComplaints()
     {
         $complaints = Complaint::with('user')->latest()->get();
@@ -61,13 +63,13 @@ class PageController extends Controller
         ]);
             
         User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
-        return redirect()->route('login')
-        ->with('success', '✅ Registrasi berhasil! Silakan login!');
 
+        return redirect()->route('login')
+            ->with('success', '✅ Registrasi berhasil! Silakan login!');
     }
 
     public function authenticate(Request $request)
@@ -75,8 +77,9 @@ class PageController extends Controller
         $credentials = $request->only('email', 'password');
         
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
             return redirect()->intended('dashboard')
-            ->with('success', '✅ Login berhasil! Selamat datang kembali!');
+                ->with('success', '✅ Login berhasil!');
         }
         
         return back()->withErrors([
@@ -88,6 +91,6 @@ class PageController extends Controller
     {
         Auth::logout();
         return redirect()->route('home')
-        ->with('success', '✅ Logout berhasil! Sampai jumpa lagi!');
+            ->with('success', '✅ Logout berhasil! Sampai jumpa lagi!');
     }
 }
