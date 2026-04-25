@@ -7,11 +7,13 @@
         <h2 class="text-3xl font-bold text-center text-gray-700 mb-2">Welcome Back!</h2>
         <p class="text-center text-gray-500 mb-6">Login to your account</p>
         
-        <form class="space-y-4">
+        <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
+          @csrf 
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
             <input 
-              type="email" 
+              type="email"
+              name="email" 
               placeholder="your.email@example.com" 
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
             />
@@ -46,7 +48,7 @@
 
         <div class="mt-6 text-center">
           <p class="text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don't have an account?
             <a href="/register" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
               Register here
             </a>

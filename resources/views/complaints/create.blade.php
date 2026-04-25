@@ -53,7 +53,7 @@
                 <button type="submit" class="w-full bg-cyan-500 text-white py-3 rounded-lg font-semibold hover:bg-cyan-400 transition-all">
                     🚀 Kirim Aduan
                 </button>
-                <a href="{{ route('complaints') }}" class="w-full text-center bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all">
+                <a href="{{ route('complaints.index') }}" class="w-full text-center bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all">
                     ← Kembali
                 </a>
             </div>

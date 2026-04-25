@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ComplaintController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServicesController;
 
 //route untuk main page
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
-Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 //route untuk auth login dan dashboard

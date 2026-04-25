@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ComplaintController extends Controller
 {   
+
     public function index(Request $request)
     {
     $search = $request->search;
@@ -16,7 +17,7 @@ class ComplaintController extends Controller
             $q->where('judul_aduan', 'like', "%{$search}%")
               ->orWhere('deskripsi', 'like', "%{$search}%");
         })
-        ->latest()
+        ->oldest()
         ->paginate(10);
         
     return view('complaints.index', compact('complaints', 'search'));
@@ -24,7 +25,7 @@ class ComplaintController extends Controller
 
     public function create()
     {
-    return view('complaints.create');
+    return view('complaints.create');   
     }
 
     public function store(Request $request)
@@ -53,4 +54,37 @@ class ComplaintController extends Controller
     $complaint = Complaint::findOrFail($id);
     return view('complaints.show', compact('complaint'));
     }
+    public function edit(string $id)
+{
+    $complaint = Complaint::findOrFail($id);
+    return view('complaints.edit', compact('complaint'));
+}
+
+public function update(Request $request, string $id)
+{
+    $request->validate([
+        'judul_aduan' => 'required|max:255',
+        'jenis_aduan' => 'required',
+        'deskripsi'   => 'required|min:10'
+    ]);
+    
+    $complaint = Complaint::findOrFail($id);
+    $complaint->update([
+        'judul_aduan' => $request->judul_aduan,
+        'jenis_aduan' => $request->jenis_aduan,
+        'deskripsi'   => $request->deskripsi,
+    ]);
+    
+    return redirect()->route('complaints.index')
+        ->with('success', '✅ Pengaduan berhasil diupdate!');
+}
+
+public function destroy(string $id)
+{
+    $complaint = Complaint::findOrFail($id);
+    $complaint->delete();
+    
+    return redirect()->route('complaints.index')
+        ->with('success', '✅ Pengaduan berhasil dihapus!');
+}
 }

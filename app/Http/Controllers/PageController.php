@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PageController extends Controller
 {
@@ -49,5 +50,44 @@ class PageController extends Controller
     {
         $complaints = Complaint::with('user')->latest()->get();
         return view('admin.complaints.index', compact('complaints'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+            
+        User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        ]);
+        return redirect()->route('login')
+        ->with('success', '✅ Registrasi berhasil! Silakan login!');
+
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+            ->with('success', '✅ Login berhasil! Selamat datang kembali!');
+        }
+        
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->onlyInput('email');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home')
+        ->with('success', '✅ Logout berhasil! Sampai jumpa lagi!');
     }
 }

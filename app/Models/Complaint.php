@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complaint extends Model
 {
-    // Kolom yang boleh diisi
     protected $fillable = [
         'user_id',
         'judul_aduan',
@@ -15,7 +14,6 @@ class Complaint extends Model
         'status',
     ];
 
-    // Relasi: complaint milik satu user
     public function user()
     {
         return $this->belongsTo(User::class);
