@@ -78,7 +78,7 @@ class PageController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard')
+            return redirect()->intended('profile')
                 ->with('success', '✅ Login berhasil!');
         }
         
@@ -93,4 +93,10 @@ class PageController extends Controller
         return redirect()->route('home')
             ->with('success', '✅ Logout berhasil! Sampai jumpa lagi!');
     }
+
+    public function profile()
+{
+    $user = Auth::user();
+    return view('profile', compact('user'));
+}
 }

@@ -18,8 +18,11 @@ Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::post('/login', [PageController::class, 'authenticate'])->name('login.post');
 Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::post('/register', [PageController::class, 'store'])->name('register.post');
-Route::get('/logout', [PageController::class, 'logout'])->name('logout');
-Route::middleware('auth')->get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::post('/logout', [PageController::class, 'logout'])->name('logout');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [PageController::class, 'profile'])->name('profile');
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+});
 
 //route untuk complaints
 

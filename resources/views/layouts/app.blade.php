@@ -21,10 +21,21 @@
             <li><a href="/about" class="px-3 py-1 rounded text-sm hover:bg-blue-600">About</a></li>
             <li><a href="/services" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Services</a></li>
             <li><a href="/contact" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Contact</a></li>
-            <li><a href="/login" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Login</a></li>
-            <li><a href="/register" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Register</a></li>
             <li><a href="/dashboard" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
             <li><a href="/complaints" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Complaints</a></li>
+        @auth
+            <li><a href="{{ route('profile') }}" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Profile</a></li>
+            <li><a href="{{ route('dashboard') }}" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="px-3 py-1 rounded text-sm hover:bg-red-500">Logout</button>
+                </form>
+            </li>
+        @else
+            <li><a href="/login" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Login</a></li>
+            <li><a href="/register" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Register</a></li>
+        @endauth
         </ul>
     </nav>
 
