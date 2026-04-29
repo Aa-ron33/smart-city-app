@@ -5,7 +5,7 @@
 {{-- Ticker Berita --}}
 <div class="relative overflow-hidden bg-white border-b border-gray-200 py-3 shadow-sm">
     <div class="flex items-center">
-        <span class="bg-cyan-500 text-white font-bold px-4 py-2 mr-4 shrink-0 text-sm">📰 BERITA</span>
+        <span class="bg-cyan-500 text-white font-bold px-16 py-16 mr-4 shrink-0 text-sm">📰 BERITA</span>
         <div class="flex animate-slide gap-12 whitespace-nowrap">
             @foreach(range(1, 2) as $i)
                 <div class="inline-flex gap-12 text-cyan-600 text-sm font-medium">
@@ -27,8 +27,8 @@
 </div>
 
 {{-- Hero Banner --}}
-<div class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-16 px-6 text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">🏙️ Smart City HQ</h1>
+<div class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-12 px-6 text-center">
+    <h1 class="text-2xl md:text-4xl font-bold mb-4">🏙️ Smart City HQ</h1>
     <p class="text-xl mb-8 opacity-90">Platform layanan kota, UMKM, dan komunitas dalam satu aplikasi</p>
     @guest
         <a href="/register" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-all">
