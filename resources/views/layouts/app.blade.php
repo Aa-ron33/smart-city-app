@@ -22,10 +22,10 @@
             <li><a href="/services" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Services</a></li>
             <li><a href="/contact" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Contact</a></li>
             <li><a href="/dashboard" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
-            <li><a href="/complaints" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Complaints</a></li>
+        
         @auth
+            <li><a href="/complaints" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Complaints</a></li>
             <li><a href="{{ route('profile') }}" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Profile</a></li>
-            <li><a href="{{ route('dashboard') }}" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Dashboard</a></li>
             <li>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
@@ -36,8 +36,8 @@
             <li><a href="/login" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Login</a></li>
             <li><a href="/register" class="px-3 py-1 rounded text-sm hover:bg-blue-600">Register</a></li>
         @endauth
-        </ul>
-    </nav>
+    </ul>
+</nav>
 
     <!-- Konten Halaman -->
     <main class="flex-1">  

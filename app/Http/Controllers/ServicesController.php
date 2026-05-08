@@ -6,33 +6,27 @@ use Illuminate\View\View;
 
 class ServicesController extends Controller
 {
-    /**
-     * Display the services index page.
-     */
     public function index(): View
     {
         return view('services', [
-            'pageTitle' => 'Our Services',
-            'pageSubtitle' => 'We offer comprehensive solutions tailored to your needs',
+            'pageTitle' => 'Smart City Services',
+            'pageSubtitle' => 'All city services in one digital platform',
             'services' => $this->servicesList(),
             'cta' => [
-                'heading' => 'Need a Custom Solution?',
-                'text' => "Let's discuss how we can help your business grow",
+                'heading' => 'Need Help?',
+                'text' => 'Our team is ready to assist you 24/7',
                 'url' => route('contact'),
                 'buttonLabel' => 'Contact Us',
             ],
         ]);
     }
 
-    /**
-     * Optional: Dynamic detail page for a single service.
-     */
     public function show(string $id): View
     {
         $services = $this->servicesList();
         $service = collect($services)->firstWhere('slug', $id);
 
-        if (! $service) {
+        if (!$service) {
             abort(404);
         }
 
@@ -42,8 +36,8 @@ class ServicesController extends Controller
             'services' => $services,
             'selectedService' => $service,
             'cta' => [
-                'heading' => 'Need a Custom Solution?',
-                'text' => "Let's discuss how we can help your business grow",
+                'heading' => 'Need Help?',
+                'text' => 'Our team is ready to assist you 24/7',
                 'url' => route('contact'),
                 'buttonLabel' => 'Contact Us',
             ],
@@ -54,40 +48,40 @@ class ServicesController extends Controller
     {
         return [
             [
-                'slug' => 'web-development',
-                'title' => 'Web Development',
-                'description' => 'Custom website development using the latest technologies. Responsive, fast, and optimized for all devices.',
-                'features' => ['Custom Design', 'Responsive Layout', 'SEO Optimized'],
+                'slug' => 'id-card',
+                'title' => '🪪 ID Card (KTP)',
+                'description' => 'Apply for a national ID card online without long queues at the office.',
+                'features' => ['Online Application', 'Track Status', 'Real-time Notification'],
             ],
             [
-                'slug' => 'mobile-apps',
-                'title' => 'Mobile Apps',
-                'description' => 'Native and cross-platform mobile applications for iOS and Android devices.',
-                'features' => ['iOS & Android', 'Cross-Platform', 'User-Friendly'],
+                'slug' => 'drivers-license',
+                'title' => '🚗 Driver\'s License',
+                'description' => 'Renew your driver\'s license without visiting the office in person.',
+                'features' => ['Document Upload', 'Test Scheduling', 'Online Payment'],
             ],
             [
-                'slug' => 'cloud-solutions',
-                'title' => 'Cloud Solutions',
-                'description' => 'Scalable cloud infrastructure and hosting solutions for your business applications.',
-                'features' => ['99.9% Uptime', 'Scalable', 'Secure'],
+                'slug' => 'complaints',
+                'title' => '📋 Public Complaints',
+                'description' => 'Report infrastructure issues and city service problems easily.',
+                'features' => ['Report Issues', 'Track Status', 'Direct Feedback'],
             ],
             [
-                'slug' => 'digital-marketing',
-                'title' => 'Digital Marketing',
-                'description' => 'Comprehensive digital marketing strategies to grow your online presence and reach.',
-                'features' => ['SEO & SEM', 'Social Media', 'Content Marketing'],
+                'slug' => 'marketplace',
+                'title' => '🛍️ UMKM Marketplace',
+                'description' => 'Shop local products from small businesses, state-owned enterprises.',
+                'features' => ['Local Products', 'State Enterprises', 'Local Services'],
             ],
             [
-                'slug' => 'ui-ux-design',
-                'title' => 'UI/UX Design',
-                'description' => 'Beautiful and intuitive user interfaces that enhance user experience and engagement.',
-                'features' => ['User Research', 'Wireframing', 'Prototyping'],
+                'slug' => 'healthcare',
+                'title' => '🏥 Healthcare Services',
+                'description' => 'Find healthcare facilities, doctor schedules, and online queuing.',
+                'features' => ['Clinic Info', 'Doctor Schedule', 'Online Queue'],
             ],
             [
-                'slug' => 'consulting',
-                'title' => 'Consulting',
-                'description' => 'Expert consultation to help you make informed technology decisions for your business.',
-                'features' => ['Strategy Planning', 'Technology Audit', 'Implementation'],
+                'slug' => 'emergency',
+                'title' => '🆘 Emergency Services',
+                'description' => 'Emergency services and important contact numbers available anytime.',
+                'features' => ['📞 Police: 110', '🚒 Fire Dept: 113', '🚑 Ambulance: 118'],
             ],
         ];
     }

@@ -21,6 +21,7 @@
         </div>
 
         <div class="bg-blue-100 p-6 rounded-lg text-center">
+        <div class="bg-blue-100 p-6 rounded-lg text-center">
             <h3 class="text-2xl font-bold text-gray-700 mb-3">{{ $cta['heading'] }}</h3>
             <p class="text-gray-600 mb-4">{{ $cta['text'] }}</p>
             <a href="{{ $cta['url'] }}" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 inline-block">{{ $cta['buttonLabel'] }}</a>

@@ -33,15 +33,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Complaint::class);
     }
-
-    public function authenticate(Request $request)
-{
-    dd($request->all()); // ← tambah ini sementara
-    
-    $credentials = $request->only('email', 'password');
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->intended('dashboard');
-    }  
-}
 }
