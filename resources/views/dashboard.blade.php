@@ -2,26 +2,47 @@
 
 @section('content')
 
-{{-- News Ticker --}}
-<div class="relative overflow-hidden bg-white border-b border-gray-200 py-3 shadow-sm">
+{{-- highlight --}}
+<div class="bg-gray-900 py-3 overflow-hidden border-y border-gray-700">
     <div class="flex items-center">
-        <span class="bg-cyan-500 text-white font-bold px-4 py-2 mr-4 shrink-0 text-sm">📰 NEWS</span>
-        <div class="flex animate-slide gap-12 whitespace-nowrap">
-            @foreach(range(1, 2) as $i)
-                <div class="inline-flex gap-12 text-cyan-600 text-sm font-medium">
-                    <span>🏙️ Lorem ipsum: City continues to grow with new digital infrastructure</span>
-                    <span class="text-gray-300">•</span>
-                    <span>🚌 Lorem ipsum: Public transportation expanded to 50 new routes</span>
-                    <span class="text-gray-300">•</span>
-                    <span>🌱 Lorem ipsum: City greening program successfully plants 10,000 trees</span>
-                    <span class="text-gray-300">•</span>
-                    <span>💼 Lorem ipsum: Local SMEs grow 30% through digital platform</span>
-                    <span class="text-gray-300">•</span>
-                    <span>🏥 Lorem ipsum: New healthcare facilities opened in 5 districts</span>
-                    <span class="text-gray-300">•</span>
-                    <span>⚡ Lorem ipsum: Electrical infrastructure strengthened for 100,000 residents</span>
-                </div>
-            @endforeach
+        {{-- Label --}}
+        <div class="bg-cyan-500 text-white font-bold px-4 py-2 mr-0 shrink-0 text-sm flex items-center gap-2 z-10">
+        </div>
+        
+        {{-- Divider --}}
+        <div class="bg-cyan-400 w-1 h-8 shrink-0"></div>
+
+        {{-- Scrolling Text --}}
+        <div class="relative overflow-hidden flex-1">
+            <div class="flex animate-marquee gap-0 whitespace-nowrap">
+                @foreach(range(1, 3) as $i)
+                    <span class="inline-flex items-center gap-8 text-white text-sm font-medium px-8">
+                        <span class="text-cyan-400 font-bold">🏙️</span>
+                        <span>City continues to grow with new digital infrastructure</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                        <span class="text-cyan-400 font-bold">🚌</span>
+                        <span>Public transportation expanded to 50 new routes</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                        <span class="text-cyan-400 font-bold">🌱</span>
+                        <span>City greening program successfully plants 10,000 trees</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                        <span class="text-cyan-400 font-bold">💼</span>
+                        <span>Local SMEs grow 30% through digital platform</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                        <span class="text-cyan-400 font-bold">🏥</span>
+                        <span>New healthcare facilities opened in 5 districts</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                        <span class="text-cyan-400 font-bold">⚡</span>
+                        <span>Electrical infrastructure strengthened for 100,000 residents</span>
+                        <span class="text-cyan-400 mx-4">★</span>
+                    </span>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Tanggal --}}
+        <div class="bg-gray-800 text-cyan-400 font-mono text-xs px-4 py-2 shrink-0 border-l border-gray-600">
+            {{ now()->format('d M Y') }}
         </div>
     </div>
 </div>
