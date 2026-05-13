@@ -6,11 +6,11 @@
 <div class="bg-gray-900 py-3 overflow-hidden border-y border-gray-700">
     <div class="flex items-center">
         {{-- Label --}}
-        <div class="bg-cyan-500 text-white font-bold px-4 py-2 mr-0 shrink-0 text-sm flex items-center gap-2 z-10">
+        <div class="bg-gray-900 text-white font-bold px-4 py-2 mr-0 shrink-0 text-sm flex items-center gap-2 z-10">
         </div>
         
         {{-- Divider --}}
-        <div class="bg-cyan-400 w-1 h-8 shrink-0"></div>
+        <div class="bg-gray-900 w-4 h-12 shrink-0"></div>
 
         {{-- Scrolling Text --}}
         <div class="relative overflow-hidden flex-1">

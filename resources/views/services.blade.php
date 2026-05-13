@@ -8,7 +8,8 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             @foreach($services as $service)
-                <div class="bg-blue-50 p-6 rounded-lg hover:shadow-lg transition">
+                <a href="{{ Auth::check() ? '/services/'.$service['slug'] : '/login' }}" 
+                   class="bg-blue-50 p-6 rounded-lg hover:shadow-lg transition block cursor-pointer">
                     <h3 class="text-xl font-bold text-blue-600 mb-3">{{ $service['title'] }}</h3>
                     <p class="text-gray-700 mb-4">{{ $service['description'] }}</p>
                     <ul class="text-gray-600 text-sm space-y-1">
@@ -16,11 +17,13 @@
                             <li>{{ $feature }}</li>
                         @endforeach
                     </ul>
-                </div>
+                    @guest
+                        <p class="text-gray-400 text-xs mt-4">🔒 Login to access</p>
+                    @endguest
+                </a>
             @endforeach
         </div>
 
-        <div class="bg-blue-100 p-6 rounded-lg text-center">
         <div class="bg-blue-100 p-6 rounded-lg text-center">
             <h3 class="text-2xl font-bold text-gray-700 mb-3">{{ $cta['heading'] }}</h3>
             <p class="text-gray-600 mb-4">{{ $cta['text'] }}</p>

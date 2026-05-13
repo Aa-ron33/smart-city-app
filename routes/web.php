@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\HealthcareController;
 
 //route untuk main page
 
@@ -24,6 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [PageController::class, 'profile'])->name('profile');
 });
 
+//route untuk healthcare
+Route::get('/healthcare', [HealthcareController::class, 'index'])->name('healthcare.index');
+Route::get('/healthcare/{id}', [HealthcareController::class, 'show'])->name('healthcare.show');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/healthcare/{id}/booking', [HealthcareController::class, 'booking'])->name('healthcare.booking');
+    Route::post('/healthcare/booking', [HealthcareController::class, 'storeBooking'])->name('healthcare.booking.store');
+    Route::get('/my-bookings', [HealthcareController::class, 'myBookings'])->name('healthcare.my-bookings');
+});
 //route untuk complaints
 
 Route::get('/complaints', [ComplaintController::class, 'index'])->name('complaints.index');
