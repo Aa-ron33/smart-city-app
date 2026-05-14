@@ -11,6 +11,7 @@ use App\Http\Controllers\HealthcareController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
+Route::get('/services/{id}', [ServicesController::class, 'show'])->name('services.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 //route untuk auth login dan dashboard

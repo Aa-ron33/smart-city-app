@@ -21,28 +21,36 @@ class ServicesController extends Controller
         ]);
     }
 
-    public function show(string $id): View
-    {
-        $services = $this->servicesList();
-        $service = collect($services)->firstWhere('slug', $id);
-
-        if (!$service) {
-            abort(404);
-        }
-
-        return view('services', [
-            'pageTitle' => $service['title'],
-            'pageSubtitle' => $service['description'],
-            'services' => $services,
-            'selectedService' => $service,
-            'cta' => [
-                'heading' => 'Need Help?',
-                'text' => 'Our team is ready to assist you 24/7',
-                'url' => route('contact'),
-                'buttonLabel' => 'Contact Us',
-            ],
-        ]);
+    public function show(string $id): mixed
+{
+    if ($id === 'healthcare') {
+        return redirect()->route('healthcare.index');
     }
+
+    if ($id === 'complaints') {
+        return redirect()->route('complaints.index');
+    }
+    
+    $services = $this->servicesList();
+    $service = collect($services)->firstWhere('slug', $id);
+
+    if (!$service) {
+        abort(404);
+    }
+
+    return view('services', [
+        'pageTitle' => $service['title'],
+        'pageSubtitle' => $service['description'],
+        'services' => $services,
+        'selectedService' => $service,
+        'cta' => [
+            'heading' => 'Need Help?',
+            'text' => 'Our team is ready to assist you 24/7',
+            'url' => route('contact'),
+            'buttonLabel' => 'Contact Us',
+        ],
+    ]);
+}
 
     private function servicesList(): array
     {
